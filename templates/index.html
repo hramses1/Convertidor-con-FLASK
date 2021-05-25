@@ -1,0 +1,34 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+<div class="card card-body mt-3 mb-3 mx-auto col-md-6">
+    <form action="/add" method="POST">
+        <div class="form-group text-center">
+            {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+            {% for mensaje in mensajes %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ mensaje }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div class="form-group"><input type="url"name ="link"placeholder="LINK"class="form-control">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block mt-3 mb-3">DESCARGAR <i class='fs-6 ml-2 bx bxs-download' style='color:rgba(14,14,14,0.72)'  ></i></button>
+        </div>
+        <div class="form-group text-center">
+            <label for="exampleSelect1" class="form-label mt-1 fs-6 text-center">Escoja la calidad de descarga</label>
+            <select class="form-select" id="exampleSelect1"name="opciones">
+                <option value = "18">360p mp4(video)</option>
+                <option value = "22">720p mp4(video)</option>
+                <option value = "137">1080p mp4(video)</option>
+                <option value = "140">AUDIO mp4</option>
+            </select>
+        </div>
+    </form>
+</div>
+{% endblock %}
